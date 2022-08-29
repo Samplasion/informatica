@@ -26,6 +26,7 @@ baseurl: "/informatica" # the subpath of your site, e.g. /blog
 url: "http://samplasion.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: Samplasion
 github_username:  Samplasion
+permalink: /:title
 
 # Build settings
 theme: minima
