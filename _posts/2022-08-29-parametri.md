@@ -155,7 +155,7 @@ elementi del vettore, seguito dal nome del parametro e da `[]`:
 
 {% highlight cpp %}
 // Questa procedura accetta un vettore di interi
-int procedura(int vettore[]) {
+void procedura(int vettore[]) {
   // ...
 }
 
