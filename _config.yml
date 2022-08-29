@@ -19,19 +19,30 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Informatica
-email: samplasion@gmail.com
+author:
+  name: Samplasion
+  email: samplasion@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Materiale di riferimento per le lezioni di Informatica del 5C.
 baseurl: "/informatica" # the subpath of your site, e.g. /blog
 url: "http://samplasion.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: Samplasion
-github_username:  Samplasion
 permalink: /:title
+
+show_excerpts: true
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
+
+minima:
+  skin: dark
+  date_format: "%-d %B %Y"
+
+  social_links:
+    twitter: Samplasion
+    github: Samplasion
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.
