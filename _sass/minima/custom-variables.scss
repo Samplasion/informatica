@@ -1,6 +1,30 @@
-$code-background-color: #eeeeee;
+@mixin lm-highlight {
+    $code-background-color: #eee !important;
+    // Code comments
+    :root {
+        --minima-code-background-color: #eee !important;
+    }
+    .highlight {
+        --minima-code-background-color: #eee !important;
+        .c, .c1, .cm {
+            color: #778 !important;
+        }
+    }
+}
 
-// Code comments
-.c1 {
-    color: #778 !important;
+@mixin dm-highlight {
+    // Code comments
+    .highlight {
+        .c, .c1, .cm {
+            color: #889 !important;
+        }
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    @include lm-highlight;
+}
+
+@media (prefers-color-scheme: dark) {
+    @include dm-highlight;
 }

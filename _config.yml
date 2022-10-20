@@ -34,15 +34,23 @@ show_excerpts: true
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-toc
 
 minima:
-  # skin: dark
+  skin: auto
   date_format: "%-d %B %Y"
 
   social_links:
     twitter: Samplasion
     github: Samplasion
 
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts" # previously `post` in Jekyll 2.2.
+    values:
+      toc: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.
