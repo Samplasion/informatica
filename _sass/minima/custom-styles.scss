@@ -22,9 +22,17 @@ details {
             margin-left: 0.3em;
         }
 
+        &:hover {
+            background-color: $code-background-color;
+        }
+
         &::-webkit-details-marker, &::marker {
             display:none !important;
         }
+        
+        padding: 0 16px;
+        border-radius: 4px;
+        transition: all 150ms;
     }
 
     @keyframes details-show {
@@ -33,10 +41,18 @@ details {
             transform: var(--details-translate, translateY(-0.5em));
         }
     }
-    
+
+    & > *:not(summary) {
+        transition: all 150ms;
+    }
     &[open] > *:not(summary) {
+        padding: 16px 0 0 16px;
+        border: 1px dashed $border-color-01;
+        border-radius: 4px;
         animation: details-show 150ms ease-in-out;
     }
+
+    margin-top: 16px;
 }
 
 summary:before {
@@ -46,10 +62,24 @@ summary:before {
     transition: .25s transform ease;
 }
 
-/* THE MAGIC 🧙‍♀️ */
 details[open] > summary:before {
     transform: rotate(90deg);
 }
 
+.post-title-info {
+    .p-name {
+        display: inline;
+    }
 
-// details summary
+    .post-pill {
+        padding: 6px 12px;
+        border-radius: 4em;
+        background-color: $code-background-color;
+        margin: 0 0 7.5px 8px;
+        vertical-align: super;
+        line-height: normal;
+        @include relative-font-size(1.2);
+    }
+
+    margin-bottom: 15px;
+}

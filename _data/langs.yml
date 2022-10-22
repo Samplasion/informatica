@@ -1,0 +1,6 @@
+cpp:
+  name: C++
+  description: C++ è un linguaggio compilato multiparadigma.
+java:
+  name: Java
+  description: Java è un linguaggio di programmazione ad oggetti (OOP) interpretato e multipiattaforma.
