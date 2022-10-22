@@ -2,7 +2,7 @@
 layout: post
 title:  "Parametri"
 date:   2022-08-29 15:26:44 +0200
-categories: sottoprogrammi
+categories: cpp sottoprogrammi
 ---
 
 I parametri sono variabili di passaggio tra sottoprogrammi.

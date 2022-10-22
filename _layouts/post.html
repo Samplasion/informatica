@@ -26,11 +26,12 @@ layout: default
       {%- endif -%}</p>
   </header>
 
+  <nav class="toc">
+    <h4>In questa pagina</h4>
+    <div>{% toc %}</div>
+  </nav>
+  
   <div class="post-content e-content" itemprop="articleBody">
-    <nav class="toc">
-      <h4>In questa pagina</h4>
-      <div>{% toc %}</div>
-    </nav>
     {{ content }}
   </div>
 

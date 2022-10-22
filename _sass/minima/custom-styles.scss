@@ -1,6 +1,7 @@
 nav.toc {
     h4 {
         margin: 16px 0;
+        @include relative-font-size(1.25);
     }
 
     background-color: $code-background-color;
@@ -13,3 +14,42 @@ nav.toc {
         list-style: "-  " !important;
     }
 }
+
+details {
+    summary {
+        h1, h2, h3, h4, h5, h6 {
+            display: inline-block;
+            margin-left: 0.3em;
+        }
+
+        &::-webkit-details-marker, &::marker {
+            display:none !important;
+        }
+    }
+
+    @keyframes details-show {
+        from {
+            opacity:0;
+            transform: var(--details-translate, translateY(-0.5em));
+        }
+    }
+    
+    &[open] > *:not(summary) {
+        animation: details-show 150ms ease-in-out;
+    }
+}
+
+summary:before {
+    content: '';
+    transform: rotate(0);
+    transform-origin: .2rem 50%;
+    transition: .25s transform ease;
+}
+
+/* THE MAGIC 🧙‍♀️ */
+details[open] > summary:before {
+    transform: rotate(90deg);
+}
+
+
+// details summary
