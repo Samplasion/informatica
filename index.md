@@ -6,7 +6,9 @@ layout: default
 ---
 
 <div class="home accordion-container">
-    <h1>Linguaggi</h1>
+    <header class="post-header">
+        <h1 class="post-title">Linguaggi</h1>
+    </header>
 
 {%- for lang_hash in site.data.langs -%}
     {%- assign lang = lang_hash[1] %}
@@ -37,7 +39,7 @@ layout: default
     {%- endfor -%}
 </ul>
     {%- endcapture %}
-    
+
     {% include accordion.html header=header content=content %}
 {%- endfor -%}
 </div>
