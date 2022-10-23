@@ -1,9 +1,26 @@
-<!-- for mathjax support -->
 {% if page.usemathjax %}
-    <script type="text/x-mathjax-config">
+<!-- for mathjax support -->
+<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
         TeX: { equationNumbers: { autoNumber: "AMS" } }
     });
-    </script>
-    <script type="text/javascript" async src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</script>
+<script type="text/javascript" async src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+{% endif %}
+
+{% if page.content contains "accordion-container" %}
+<!-- Accordion.js -->
+<!-- <link rel="stylesheet" href="https://unpkg.com/accordion-js@3.3.2/dist/accordion.min.css"> -->
+<script src="https://unpkg.com/accordion-js@3.3.2/dist/accordion.min.js"></script>
+<script>
+    let accordion;
+    document.addEventListener("DOMContentLoaded", () => {
+        accordion = new Accordion('.accordion-container');
+    });
+
+    function toggleAccordion(element) {
+        let id = `${element.id}`.replace("ac-trigger-", "");
+        accordion.toggle(id);
+    }
+</script>
 {% endif %}

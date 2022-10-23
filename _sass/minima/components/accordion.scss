@@ -1,0 +1,98 @@
+.ac {
+    margin-top: 16px;
+    font: inherit;
+
+    button.ac-trigger {
+        font: inherit;
+        width: 100%;
+    }
+    
+    .ac-trigger {
+        h1, h2, h3, h4, h5, h6 {
+            display: inline-block;
+        }
+
+        text-align: left;
+        background-color: transparent;
+        color: $text-color;
+        border-radius: 4px;
+        display: block;
+        cursor: pointer;
+        transition: all .25s ease;
+        position: relative;
+        text-decoration: none;
+        margin: 0;
+        border: 0;
+        padding: 8px 16px;
+
+        :last-child {
+            margin-bottom: 0;
+        }
+
+        &::after {
+            content: "+";
+            text-align: center;
+            width: 15px;
+            -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+            transition: all 150ms;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+        }
+
+        &:hover {
+            background-color: $code-background-color;
+        }
+    }
+
+    .ac-panel {
+        overflow: hidden;
+        padding: 0 0 0 16px;
+
+        :last-child {
+            margin-bottom: 0;
+
+            :last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.ac.js-enabled {
+    .ac-panel {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+.ac.is-active {
+    .ac-panel {
+        visibility: visible;
+        opacity: 1;
+
+        padding: 16px;
+        border: 1px dashed $border-color-01;
+        border-radius: 4px;
+        animation: details-show 150ms ease-in-out;
+
+        :last-child {
+            margin-bottom: 0;
+
+            :last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    >.ac-header {
+        .ac-trigger {
+            margin: 0 0 16px 0;
+
+            &::after {
+                content: "–";
+            }
+        }
+    }
+}

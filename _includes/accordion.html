@@ -1,0 +1,12 @@
+<div class="ac">
+    <div class="ac-header">
+        <!-- onclick="toggleAccordion(this)" -->
+        <button type="button" class="ac-trigger">
+            {{ include.header | markdownify }}
+        </button>
+    </div>
+
+    <div class="ac-panel">
+        {{ include.content | markdownify }}
+    </div>
+</div>
