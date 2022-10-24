@@ -28,6 +28,14 @@ baseurl: "/informatica" # the subpath of your site, e.g. /blog
 url: "http://samplasion.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 permalink: /:title
 
+header_pages:
+  - title: Appunti
+    url: https://schemi.samplasion.js.org
+  - title: Sorgente
+    url: https://github.com/Samplasion/informatica
+
+github_repo: https://github.com/Samplasion/informatica
+
 show_excerpts: true
 
 # Build settings

@@ -18,7 +18,9 @@ lang: it
         ~ 
         {%- assign mdate = page.modified_date | date_to_xmlschema -%}
         <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
-          {% include date.html date=page.modified_date format=date_format lang="it" %}
+          <a href="{{ site.github_repo }}/blame/master/{{ page.path }}">
+            {% include date.html date=page.modified_date format=date_format lang="it" %}
+          </a>
         </time>
       {%- endif -%}
       {%- if page.author -%}
