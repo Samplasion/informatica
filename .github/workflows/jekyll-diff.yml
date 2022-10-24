@@ -8,7 +8,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     # Who cares, it's a container
-    - run: git config --global --add safe.directory '*'
+    - name: Fix git safe.directory in container
+      run: mkdir -p /home/runner/work/_temp/_github_home && printf "[safe]\n\tdirectory = /github/workspace" > /home/runner/work/_temp/_github_home/.gitconfig
     - uses: David-Byrne/jekyll-diff-action@v1.3.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
