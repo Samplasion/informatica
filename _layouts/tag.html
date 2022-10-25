@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+
+
+<div class="home accordion-container">
+    <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+    </header>
+
+    {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+    <ul class="post-list">
+        {%- for post in page.tagged_posts -%}
+        {%- include post-listing.html post=post -%}
+        {% else %}
+        Nessun contenuto relativo a {{ page.plang.name }}.
+        {%- endfor -%}
+    </ul>
+</div>

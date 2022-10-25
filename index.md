@@ -11,31 +11,29 @@ layout: default
     </header>
 
 {%- for lang_hash in site.data.langs -%}
-    {%- assign lang = lang_hash[1] %}
+    {%- assign plang = lang_hash[1] %}
 
     {% capture header %}
-<h2>{{ lang.name }}</h2>
-{{ lang.description | markdownify }}
+<h2>{{ plang.name }}</h2>
+{{ plang.description | markdownify }}
     {% endcapture %}
 
     {%- capture content -%}
     {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-    {%- assign filtered_posts = site.posts | where: "lang", lang_hash[0] %}
+    {%- assign filtered_posts = site.posts | where: "tag", lang_hash[0] %}
+    {%- assign filtered_size = site.posts | size %}
+    {%- assign limit = 5 -%}
+
 <ul class="post-list">
-    {%- for post in filtered_posts -%}
-    <li>
-        <span class="post-meta">{% include date.html date=post.date format=date_format %}</span>
-        <h3>
-            <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-            </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-            {{ post.excerpt }}
-        {%- endif -%}
-    </li>
+    {%- for post in filtered_posts limit: limit -%}
+    {%- include post-listing.html post=post -%}
+    {% if filtered_size > limit %}
+    <a href="{{ "/linguaggio/" | append: lang_hash[0] | append: "/" | relative_url }}">
+        Tutti i post relativi a {{ plang.name }} →
+    </a>
+    {% endif %}
     {% else %}
-    Nessun contenuto relativo a {{ lang.name }}.
+    Nessun contenuto relativo a {{ plang.name }}.
     {%- endfor -%}
 </ul>
     {%- endcapture %}
