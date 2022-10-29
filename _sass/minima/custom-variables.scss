@@ -9,6 +9,16 @@
         .c, .c1, .cm {
             color: #778 !important;
         }
+
+        .cp { // Comment.Preproc
+            color: #b6561f;
+            font-weight: bold
+        }
+
+        .cpf { // Comment.PreprocFile
+            color: #458;
+            font-style: italic;
+        }
     }
 }
 
@@ -17,6 +27,16 @@
     .highlight {
         .c, .c1, .cm {
             color: #889 !important;
+        }
+
+        .cp { // Comment.Preproc
+            color: #c97647;
+            font-weight: bold
+        }
+
+        .cpf { // Comment.PreprocFile
+            color: #82aaff;
+            font-style: italic;
         }
     }
 }
