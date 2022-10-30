@@ -22,6 +22,7 @@ gem "minima", git: "https://github.com/jekyll/minima"
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
   gem 'jekyll-toc'
+  gem 'jekyll-highlight-param', :github => 'UriShX/jekyll-highlight-param'
 end
 gem "webrick"
 

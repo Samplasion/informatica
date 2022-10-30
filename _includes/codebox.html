@@ -1,0 +1,18 @@
+<figure class="highlight-box">
+    {%- highlight_param {{ include.lang }} -%}
+    {{ include.code }}
+    {%- endhighlight_param -%}
+
+    {%- assign desc = include.description | default: "" -%}
+    {% unless include.description == "" %}
+    <figcaption>{{ include.description }}</figcaption>
+    {% endunless %}
+
+    <div class="highlight-box-actions">
+        {%- assign source_code = include.full_code | default: include.code | strip | cgi_escape -%}
+        <a href="https://cpp.sh/?source={{ source_code }}" target="_blank">
+            Esegui codice
+            {% include ext.html -%}
+        </a>
+    </div>
+</figure>

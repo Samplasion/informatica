@@ -1,0 +1,7 @@
+{% assign remote_code = site.snippets | where: "name", include.name | first %}
+{% include codebox.html 
+    lang=remote_code.lang
+    code=remote_code.content
+    full_code=remote_code.full_code
+    description=remote_code.description
+%}
