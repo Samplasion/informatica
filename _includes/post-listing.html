@@ -1,5 +1,5 @@
 <li>
-    <span class="post-meta">{% include date.html date=include.post.date format=date_format %}</span>
+    <span class="post-meta">{%- include date.html date=include.post.date format=date_format -%}</span>
     <h3>
         <a class="post-link" href="{{ include.post.url | relative_url }}">
         {{ include.post.title | escape }}
