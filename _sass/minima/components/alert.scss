@@ -1,0 +1,24 @@
+
+.alert {
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.alert {
+    overflow: hidden;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+
+    @media (prefers-color-scheme: dark) {
+        color: #4dd0af;
+        background-color: #005e4699;
+        border-color: #007154;
+    }
+}
