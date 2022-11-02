@@ -3,19 +3,19 @@ name: record_intro
 lang: cpp
 full_code: |
     #include <iostream>
-    #include <cstring>
 
     using namespace std;
 
     int main() {
         struct Tavolo {
-            char modello[100];
+            string modello;
             int lunghezza;
             int larghezza;
             int profondita;
         };
         
-        struct Tavolo tavolo = { "T4V-0L1n0" };
+        Tavolo tavolo;
+        tavolo.modello = "T4V-0L1n0";
         tavolo.lunghezza = 100;
         tavolo.larghezza = 150;
         tavolo.profondita = 30;
@@ -32,7 +32,8 @@ struct <nome> {
     <tipologia> <nomeCampo>;
     // ...
 } [nome, nome, ...];
-// dove [nome, nome, ...] sono i nomi delle variabili da dichiarare (vedi sotto)
+// dove [nome, nome, ...] sono i nomi
+// delle variabili da dichiarare (vedi sotto)
 
 // ad esempio...
 struct Rettangolo {
