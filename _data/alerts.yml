@@ -1,0 +1,12 @@
+primary:
+  icon: info-circle
+secondary:
+  icon: info-circle
+success:
+  icon: check-square-o
+danger:
+  icon: times
+warning:
+  icon: exclamation-triangle
+info:
+  icon: info-circle
