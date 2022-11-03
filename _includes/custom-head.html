@@ -24,3 +24,9 @@
     }
 </script>
 {% endif %}
+
+{% if page.content contains "fa fa-" %}
+<!-- Font Awesome v4.7.0 -->
+<!-- yes it's v4 because I don't need v6 -->
+<link rel="stylesheet" href="{{ "/assets/css/font-awesome.min.css" | relative_url }}">
+{% endif %}

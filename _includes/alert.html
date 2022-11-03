@@ -1,0 +1,6 @@
+{% assign color = include.color | default: "primary" %}
+{% assign icon = include.icon | default: "info" %}
+<div markdown="span" class="alert alert-{{ color }}" role="alert">
+    <i class="fa fa-{{ icon }}"></i>
+    <b>{{ include.title | default: "Suggerimento" }}:</b> {{ include.content }}
+</div>
