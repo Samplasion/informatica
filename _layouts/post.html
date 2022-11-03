@@ -20,9 +20,6 @@ lang: it
         <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
           <a href="{{ site.github_repo }}/blame/master/{{ page.path }}" target="_blank">
             {% include date.html date=page.modified_date format=date_format lang="it" -%}
-            {% comment %}
-            {% include ext.html %}
-            {% endcomment %}
           </a>
         </time>
       {%- endif -%}
