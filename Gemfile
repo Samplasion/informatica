@@ -24,6 +24,7 @@ group :jekyll_plugins do
   gem 'jekyll-toc'
   gem 'jekyll-highlight-param', :github => 'UriShX/jekyll-highlight-param'
   gem 'jekyll-figure'
+  gem 'jekyll-email-protect'
 end
 gem "webrick"
 
