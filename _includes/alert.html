@@ -1,7 +1,7 @@
 {% assign color = include.color | default: "primary" %}
 {% assign icon = include.icon | default: site.data.alerts[color].icon %}
 {% assign title = include.title %}
-<div markdown="span" class="alert alert-{{ color }}" role="alert">
-    {{ icon | fw }}
-    <b>{% if title %}{{ title }}:{% endif %}</b> {{ include.content | trim }}
+<div markdown="{{ include.markdown | default: "span"}}" class="alert alert-{{ color }}" role="alert">
+{{ icon | fw }}
+<b>{% if title %}{{ title }}:{% endif %}</b> {{ include.content | trim }}
 </div>

@@ -11,6 +11,16 @@
         text-decoration: underline;
         font-weight: bold;
     }
+
+    & > :last-child {
+        margin-bottom: 0;
+    }
+
+    & > :last-child {
+        .highlight {
+            margin-bottom: 0;
+        }
+    }
 }
 
 .alert-primary {

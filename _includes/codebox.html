@@ -8,6 +8,7 @@
     <figcaption>{{ include.description }}</figcaption>
     {% endunless %}
 
+    {% unless include.static %}
     <div class="highlight-box-actions">
         {%- assign source_code = include.full_code | default: include.code | strip | cgi_escape -%}
         <a href="https://cpp.sh/?source={{ source_code }}" target="_blank">
@@ -15,4 +16,5 @@
             {% include ext.html -%}
         </a>
     </div>
+    {% endunless %}
 </figure>

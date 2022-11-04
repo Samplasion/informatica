@@ -1,0 +1,126 @@
+/**
+ * Syntax highlighting styles
+ * Based on the Darcula theme for JetBrains IDEs
+ * Author: Shadowfacts
+ */
+
+@mixin darcula {
+    .highlight {
+        table td {
+            padding: 5px;
+        }
+
+        table pre {
+            margin: 0;
+        }
+
+        .highlight,
+        .w {
+            color: #d0d0d0;
+        }
+
+        .err {
+            color: #151515;
+            background-color: #ac4142;
+        }
+
+        .c,
+        .cd,
+        .cm,
+        .c1,
+        .cs {
+            color: #888;
+        }
+
+        .cp {
+            color: #f4bf75;
+        }
+
+        .nt {
+            color: #f4bf75;
+        }
+
+        .o,
+        .ow {
+            color: #d0d0d0;
+        }
+
+        .p,
+        .pi {
+            color: #d0d0d0;
+        }
+
+        .gi {
+            color: #90a959;
+        }
+
+        .gd {
+            color: #ac4142;
+        }
+
+        .gh {
+            color: #6a9fb5;
+            font-weight: bold;
+        }
+
+        .k,
+        .kn,
+        .kp,
+        .kr,
+        .kv {
+            color: #aa759f;
+        }
+
+        .kc {
+            color: #d28445;
+        }
+
+        .kt {
+            color: #d28445;
+        }
+
+        .kd {
+            color: #d28445;
+        }
+
+        .s, .sb, .sc, .sd, .s2, .sh, .sx, .s1, .dl {
+            color: #90a959;
+        }
+
+        .sr {
+            color: hsl(170, 66%, 73%);
+            background-color: hsl(170, 10%, 23%);
+        }
+
+        .si {
+            color: #a55d37;
+        }
+
+        .se {
+            color: #a55d37;
+        }
+
+        .nn, .nc, .no {
+            color: #f4bf75;
+        }
+        
+        .nb {
+            font-weight: bold;
+            color: #f4bf75;
+        }
+
+        .na {
+            color: #6a9fb5;
+        }
+
+        .m, .mf, .mh, .mi, .il, .mo, .mb, .mx {
+            color: #90a959;
+        }
+
+        .ss {
+            color: #90a959;
+        }
+
+        .cpf { color: #82AAFF; font-style: italic; } // Comment.Preproc.File
+    }
+}

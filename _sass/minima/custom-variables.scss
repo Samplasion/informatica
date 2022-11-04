@@ -1,3 +1,5 @@
+@import 'highlight/dark.scss';
+
 @mixin lm-highlight {
     $code-background-color: #eee !important;
     // Code comments
@@ -23,22 +25,7 @@
 }
 
 @mixin dm-highlight {
-    // Code comments
-    .highlight {
-        .c, .c1, .cm {
-            color: #889 !important;
-        }
-
-        .cp { // Comment.Preproc
-            color: #f78c6c;
-            font-weight: bold
-        }
-
-        .cpf { // Comment.PreprocFile
-            color: #82aaff;
-            font-style: italic;
-        }
-    }
+    @include darcula;
 }
 
 @media (prefers-color-scheme: light) {
