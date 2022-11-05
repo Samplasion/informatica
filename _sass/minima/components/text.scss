@@ -1,0 +1,11 @@
+@import 'colors.scss';
+
+@each $color in map-keys($colors) {
+    .text-#{$color} {
+        color: map-get(map-get($colors, $color), "light");
+        
+        @media (prefers-color-scheme: dark) {
+            color: map-get(map-get($colors, $color), "dark");
+        }
+    }
+}

@@ -1,0 +1,26 @@
+$colors: (
+    "primary": (
+        "light": hsl(216, 90%, 50),
+        "dark": hsl(210, 40%, 50),
+    ),
+    "secondary": (
+        "light": hsl(210, 7%, 50),
+        "dark": hsl(0, 0%, 50),
+    ),
+    "success": (
+        "light": hsl(96, 50%, 40),
+        "dark": hsl(165, 58%, 50),
+    ),
+    "danger": (
+        "light": hsl(355, 70%, 50),
+        "dark": hsl(6, 65%, 50),
+    ),
+    "warning": (
+        "light": hsl(35, 80%, 50),
+        "dark": hsl(37, 88%, 50),
+    ),
+    "info": (
+        "light": hsl(190, 75%, 40),
+        "dark": hsl(188, 77%, 50),
+    ),
+);

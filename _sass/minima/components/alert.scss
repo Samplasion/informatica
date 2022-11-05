@@ -1,3 +1,5 @@
+@use "sass:map";
+
 .alert {
     padding: 15px;
     border: 1px solid transparent;
@@ -23,74 +25,37 @@
     }
 }
 
-.alert-primary {
-    color: #084298;
-    background-color: #cfe2ff;
-    border-color: #b6d4fe;
+@import 'colors.scss';
+
+@mixin colored-alert($light-color, $dark-color) {
+    color: change-color($light-color, $lightness: 30);
+    background-color: change-color($light-color, $lightness: 90);
+    border-color: change-color($light-color, $lightness: 85);
     
     @media (prefers-color-scheme: dark) {
-        color: #9cb8d3;
-        background-color: #1c2d40aa;
-        border-color: #233a52;
+        color: change-color($dark-color, $lightness: 70);
+        background-color: change-color($dark-color, $lightness: 20, $alpha: 0.667);
+        border-color: change-color($dark-color, $lightness: 25);
     }
 }
 
-.alert-secondary {
-    color: #41464b;
-    background-color: #e2e3e5;
-    border-color: #d3d6d8;
-    
-    @media (prefers-color-scheme: dark) {
-        color: #aaaaaa;
-        background-color: #313131aa;
-        border-color: #3f3f3f;
+@each $color in map-keys($colors) {
+    .alert-#{$color} {
+        @include colored-alert(
+            map-get(map-get($colors, $color), "light"),
+            map-get(map-get($colors, $color), "dark")
+        );
     }
 }
 
 .alert-success {
-    color: #2f572f;
-    background-color: #dff0d8;
-    border-color: #cfe6bd;
-
-    @media (prefers-color-scheme: dark) {
-        color: #4dd0af;
-        background-color: #005e4699;
-        border-color: #007154;
-    }
-}
-
-.alert-danger {
-    color: #842029;
-    background-color: #f8d7da;
-    border-color: #f5c2c7;
-
-    @media (prefers-color-scheme: dark) {
-        color: #ee8277;
-        background-color: #74261eaa;
-        border-color: #8b2e24;
-    }
-}
-
-.alert-warning {
-    color: #664d03;
-    background-color: #f8e9ba;
-    border-color: #f4db8f;
-
-    @media (prefers-color-scheme: dark) {
-        color: #f7ba59;
-        background-color: #7a4e09aa;
-        border-color: #925e0b;
+    @media (prefers-color-scheme: light) {
+        border-color: #c0e0ac;
     }
 }
 
 .alert-info {
-    color: #055160;
-    background-color: #cff4fc;
-    border-color: #a9e9f6;
-
-    @media (prefers-color-scheme: dark) {
-        color: #5dbecd;
-        background-color: #0c515caa;
-        border-color: #0e616e;
+    @media (prefers-color-scheme: light) {
+        border-color: #9ddfeb;
     }
 }

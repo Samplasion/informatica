@@ -2,6 +2,8 @@
 layout: page
 ---
 
+{% assign types = "primary, secondary, success, danger, warning, info" | split: ", " %}
+
 {% include alert.html
     color="warning"
     icon="exclamation-triangle"
@@ -11,7 +13,6 @@ layout: page
 
 ## Alerts
 
-{% assign types = "primary, secondary, success, danger, warning, info" | split: ", " %}
 {% for type in types %}
 {% capture content %}
 A simple {{ type }} alert with [an example link]({{ "/" | relative_url }}).
@@ -149,6 +150,12 @@ function test() {
 *   This is an unordered list following a header.
 *   This is an unordered list following a header.
 *   This is an unordered list following a header.
+
+{% for type in types -%}
+-   <span class="text-{{ type }}">
+        This is a text with `text-{{type}}`.
+    </span>
+{% endfor %}
 
 ##### Header 5
 
