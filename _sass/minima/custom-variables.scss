@@ -7,6 +7,8 @@
         --minima-code-background-color: #eee !important;
     }
     .highlight {
+        color: $text-color;
+
         --minima-code-background-color: #eee !important;
         .c, .c1, .cm {
             color: #778 !important;

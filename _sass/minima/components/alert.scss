@@ -8,6 +8,12 @@
     margin-top: 10px;
     overflow: hidden;
 
+    @media (prefers-color-scheme: light) {
+        code, pre {
+            border-color: $border-color-02;
+        }
+    }
+
     a {
         color: inherit;
         text-decoration: underline;

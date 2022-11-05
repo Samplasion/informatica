@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Parametri"
-date:   2022-08-29 15:26:44 +0200
+title: Parametri
+date: 2022-08-29 15:26:44 +0200
 categories: cpp sottoprogrammi
 tag: cpp
+modified_date: 2022-11-05T16:51:27.433Z
 ---
 
 I parametri sono variabili di passaggio tra sottoprogrammi.
@@ -143,8 +144,34 @@ int main() {
 }
 {% endhighlight %}
 
-Le funzioni **non possono ritornare valori non semplici**, pertanto non è
-possibile ritornare vettori da una funzione tramite `return`.
+Le funzioni **non possono ritornare vettori**.
+
+{% capture noteFunctionCall %}
+Nonostante alcuni sostengano che non utilizzare il valore di ritorno di una
+funzione sia un errore (di sintassi, per giunta!), è perfettamente possibile:
+
+```cpp
+int funzione() {
+  cout << "Un dato che mi interessa";
+  return 42;
+}
+
+int main() {
+  funzione(); // !
+}
+```
+
+Ciò non è un errore: il valore di ritorno della funzione viene calcolato e
+immediatamente scartato in fase di chiamata, ma il codice viene eseguito
+comunque, in questo caso stampando il dato che ci interessa.
+
+Una funzione ritornante un valore che raramente viene usato è `printf`.
+{% endcapture %}
+{% include alert.html
+  markdown="1"
+  title="Ignorare un valore di ritorno"
+  content=noteFunctionCall
+%}
 
 ## Parametri e vettori
 
