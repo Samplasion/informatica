@@ -1,0 +1,14 @@
+h1, h2, h3, h4, h5, h6 {
+    // If the @media hover query isn't supported,
+    // fall back to always showing the §
+    @media (hover: hover) {
+        > a.anchor {
+            opacity: 0;
+            transition: all 0.25s ease-out;
+        }
+    }
+
+    &:hover > a.anchor, & > a.anchor:focus {
+        opacity: 1;
+    }
+}

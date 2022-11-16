@@ -24,3 +24,61 @@ $colors: (
         "dark": hsl(188, 77%, 50),
     ),
 );
+
+@function get-color($type, $variant) {
+    @return map-get($map: map-get($map: $colors, $key: $type), $key: $variant);
+}
+
+@mixin get-color-key($type, $key: "color") {
+    #{$key}: get-color($type, "light");
+
+    @media (prefers-color-scheme: dark) {
+        #{$key}: get-color($type, "dark");
+    }
+}
+
+@mixin box-text-color($type, $key) {
+    $light-color: get-color($type, "light");
+    $dark-color: get-color($type, "dark");
+
+    #{$key}: change-color($light-color, $lightness: 30);
+
+    @media (prefers-color-scheme: dark) {
+        #{$key}: change-color($dark-color, $lightness: 70);
+    }
+}
+
+@mixin box-bg-color($type, $key) {
+    $light-color: get-color($type, "light");
+    $dark-color: get-color($type, "dark");
+
+    #{$key}: change-color($light-color, $lightness: 90);
+
+    @media (prefers-color-scheme: dark) {
+        #{$key}: change-color($dark-color, $lightness: 20, $alpha: 0.667);
+    }
+}
+
+@mixin box-border-color($type, $key) {
+    $light-color: get-color($type, "light");
+    $dark-color: get-color($type, "dark");
+
+    // Manually touch up some colors
+    @if ($type == "success") {
+        #{$key}: #c0e0ac;
+    } @else if ($type == "info") {
+        #{$key}: #9ddfeb;
+    } @else {
+        #{$key}: change-color($light-color, $lightness: 85);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        #{$key}: change-color($dark-color, $lightness: 25);
+    }
+}
+
+@mixin colored-box($type) {
+    @include box-text-color($type, "color");
+    @include box-bg-color($type, "background-color");
+    @include box-border-color($type, "border-color");
+}

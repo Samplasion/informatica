@@ -1,0 +1,16 @@
+abbr[title] {
+    text-decoration: none;
+    &:after {
+        content: " (" attr(title) ")";
+        font-style: italic;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    abbr[title] {
+        text-decoration: underline dotted;
+        &:after {
+            content: "";
+        }
+    }
+}

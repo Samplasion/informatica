@@ -1,7 +1,9 @@
 <figure class="highlight-box">
-    {%- highlight_param {{ include.lang }} -%}
+    {% assign includelang = include.lang %}
+    {% assign includehighlight_lines = include.highlight_lines %}
+    {%- highlight includelang highlight_lines=includehighlight_lines -%}
     {{ include.code }}
-    {%- endhighlight_param -%}
+    {%- endhighlight -%}
 
     {%- assign desc = include.description | default: "" -%}
     {% unless include.description == "" %}

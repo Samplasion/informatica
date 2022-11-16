@@ -23,6 +23,14 @@
             color: #458;
             font-style: italic;
         }
+
+        .hll {
+            background-color: #f4bf7540;
+
+            &:hover {
+                background-color: #f4bf7560;
+            }
+        }
     }
 }
 

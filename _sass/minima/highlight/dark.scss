@@ -122,5 +122,13 @@
         }
 
         .cpf { color: #82AAFF; font-style: italic; } // Comment.Preproc.File
+
+        .hll {
+            background-color: #f4bf7520;
+
+            &:hover {
+                background-color: #f4bf7530;
+            }
+        }
     }
 }

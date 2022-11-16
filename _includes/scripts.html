@@ -1,0 +1,18 @@
+<script>
+    // Remove default Mermaid styles
+    const observer = new MutationObserver(function (records, observer) {
+        for (const mutation of records) {
+            const style = document.querySelector(".mermaid svg style")
+            if (style != null) {
+                style.parentNode.removeChild(style);
+                observer.disconnect();
+            }
+        }
+    });
+
+    observer.observe(document.querySelector(".mermaid"), {
+        attributes: true,
+        childList: true,
+        subtree: true
+    });
+</script>

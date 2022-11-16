@@ -11,27 +11,32 @@ lang: it
     </div>
     <p class="post-meta">
       {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      <span class="sr-only">Creato</span>
       <span title="Creato">{{ "clock-o" | fa }}</span>
       <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {% include date.html date=page.date format=date_format lang="it" %}
       </time>
       {%- if page.modified_date -%}
-        ~
-        <span title="Modificato">{{ "pencil" | fa }}</span>
-        {%- assign mdate = page.modified_date | date_to_xmlschema -%}
-        <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
-          <a href="{{ site.github_repo }}/blame/master/{{ page.path }}" target="_blank">
-            {% include date.html date=page.modified_date format=date_format lang="it" -%}
-          </a>
-        </time>
+      ~
+      <span class="sr-only">Modificato</span>
+      <span title="Modificato">{{ "pencil" | fa }}</span>
+      {%- assign mdate = page.modified_date | date_to_xmlschema -%}
+      <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
+        <a href="{{ site.github_repo }}/blame/master/{{ page.path }}" target="_blank">
+          {% include date.html date=page.modified_date format=date_format lang="it" -%}
+        </a>
+      </time>
       {%- endif -%}
+      <span aria-hidden="true">•</span>
+      {% include read-time.html -%}
       {%- if page.author -%}
-        • {% for author in page.author %}
-          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="p-author h-card" itemprop="name">{{ author }}</span></span>
-            {%- if forloop.last == false %}, {% endif -%}
-        {% endfor %}
-      {%- endif -%}</p>
+      • {% for author in page.author %}
+      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-author h-card" itemprop="name">{{ author }}</span></span>
+      {%- if forloop.last == false %}, {% endif -%}
+      {% endfor %}
+      {%- endif -%}
+    </p>
   </header>
 
   <nav class="toc">
@@ -40,11 +45,17 @@ lang: it
   </nav>
 
   <div class="post-content e-content" itemprop="articleBody">
-    {{ content }}
+    {% capture anchor_body %}
+      <!-- § -->
+      <!-- No accessibility label: the link is supposed to be hidden -->
+      <!-- and there's a table of contents anyway so that's that -->
+      {{ "link" | fa }}
+    {% endcapture %}
+    {% include anchor_headings.html html=content anchorBody=anchor_body anchorClass="anchor" %}
   </div>
 
   {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
+  {%- include disqus_comments.html -%}
   {%- endif -%}
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>

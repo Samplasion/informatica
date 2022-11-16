@@ -13,7 +13,7 @@
         },
         {
           "title": "Description",
-          "name": "description",
+          "name": "excerpt",
           "type": "string"
         },
         {

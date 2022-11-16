@@ -9,7 +9,7 @@
     overflow: hidden;
 
     @media (prefers-color-scheme: light) {
-        code, pre {
+        code, pre, .highlight-box .highlight-box-actions > * {
             border-color: $border-color-02;
         }
     }
@@ -33,35 +33,8 @@
 
 @import 'colors.scss';
 
-@mixin colored-alert($light-color, $dark-color) {
-    color: change-color($light-color, $lightness: 30);
-    background-color: change-color($light-color, $lightness: 90);
-    border-color: change-color($light-color, $lightness: 85);
-    
-    @media (prefers-color-scheme: dark) {
-        color: change-color($dark-color, $lightness: 70);
-        background-color: change-color($dark-color, $lightness: 20, $alpha: 0.667);
-        border-color: change-color($dark-color, $lightness: 25);
-    }
-}
-
 @each $color in map-keys($colors) {
     .alert-#{$color} {
-        @include colored-alert(
-            map-get(map-get($colors, $color), "light"),
-            map-get(map-get($colors, $color), "dark")
-        );
-    }
-}
-
-.alert-success {
-    @media (prefers-color-scheme: light) {
-        border-color: #c0e0ac;
-    }
-}
-
-.alert-info {
-    @media (prefers-color-scheme: light) {
-        border-color: #9ddfeb;
+        @include colored-box($color);
     }
 }

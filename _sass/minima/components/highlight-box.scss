@@ -25,6 +25,9 @@
             padding: 0.5rem;
             transition: background-color 0.3s ease-out;
             border-radius: 4px;
+            text-decoration: none;
+            font-weight: normal;
+            color: $link-base-color;
 
             &:hover {
                 background-color: $border-color-01;
