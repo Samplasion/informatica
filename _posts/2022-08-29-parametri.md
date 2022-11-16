@@ -4,7 +4,7 @@ title: Funzioni, procedure e parametri
 date: 2022-08-29 15:26:44 +0200
 categories: cpp sottoprogrammi
 tag: cpp
-modified_date: 2022-11-16T20:24:30.035Z
+modified_date: 2022-11-16T20:40:56.525Z
 excerpt: Tutto su modello top-down, funzioni, procedure e parametri.
 ---
 
@@ -36,7 +36,7 @@ end
 subgraph BU [Approccio bottom-up]
   direction BT
   %% viene invertito nel grafico finale
-  Up --> Bottom
+  Bottom --> Up
 end
 
 TD --- PD --- BU
