@@ -4,7 +4,7 @@ title: Funzioni, procedure e parametri
 date: 2022-08-29 15:26:44 +0200
 categories: cpp sottoprogrammi
 tag: cpp
-modified_date: 2022-11-16T20:40:56.525Z
+modified_date: 2022-11-17T17:45:42.448Z
 excerpt: Tutto su modello top-down, funzioni, procedure e parametri.
 ---
 
@@ -219,58 +219,6 @@ I parametri sono variabili di passaggio tra sottoprogrammi.
 Vengono usati per fornire dati dal chiamante alla procedura che viene chiamata e
 viceversa.
 
-## Passaggio di dati
-
-I parametri possono venire scambiati in due modi:
-
-<ul>
-  <li>
-    <strong>Pass by value:</strong><br/>
-    Quando il chiamante fornisce dati alla funzione chiamata (e non
-    viceversa), il passaggio avviene "per valore" e le variabili
-    corrispondenti vengono dette di <strong>input alla procedura</strong>.
-{% highlight cpp %}
-void stampa(int a);
-
-int main() {
-    int a = 1;
-    stampa(a);
-}
-
-void stampa(int a) {
-    cout << a;
-}
-{% endhighlight %}
-  </li>
-  <li>
-    <strong>Pass by reference:</strong><br/>
-    Quando la funzione deve restituire dati al chiamante, quest'ultimo
-    passa le variabili "per indirizzo", e queste vengono dette di
-    <strong>output alla procedura</strong>.
-{% highlight cpp %}
-void aggiungi_uno(int &a);
-
-int main() {
-    int a = 1;
-    aggiungi_uno(a);
-
-    cout << a; // 2
-}
-
-void aggiungi_uno(int &a) {
-    a += 1;
-}
-{% endhighlight %}
-
-    Per passare variabili per indirizzo bisogna aggiungere <code>&amp;</code>
-    prima del nome della variabile nell'intestazione della funzione. In caso
-    contrario, il valore verrà passato <em>per valore</em> e verrà conservato
-    in una variabile con indirizzo differente. In tal caso, ogni modifica
-    effettuata all'interno della funzione chiamata verrà persa nel momento in
-    cui la stessa ritorna al chiamante.
-  </li>
-</ul>
-
 ## Parametri formali e attuali
 
 Vengono definiti **parametri formali** quelli presenti nell'intestazione della
@@ -282,23 +230,58 @@ esistono nella funzione chiamante.
 
 La chiamata è il passaggio dell'esecuzione da una funzione ad un'altra.
 La funzione all'interno della quale avviene la chiamata è detta **procedura
-chiamante**, quella che viene chiamata è detta **procedura chiamata**.
+chiamante**, quella che viene chiamata è detta **procedura chiamata** (da non
+confondere con _la chiamata_ intesa come "invocazione").
 
-## Chiamata e parametri
+## Passaggio dei parametri
 
 La chiamata avviene all'interno di una qualsiasi funzione ponendo `()` dopo
 il nome della variabile **senza riportare la tipologia**.
 La chiamata può essere parametrica o non parametrica.
 Nel primo caso, per valori semplici, i parametri possono essere:
 
-* **Per valore**: il valore di ogni parametro viene copiato e inserito
-  in una variabile che esiste solo nella funzione chiamata. Di conseguenza,
-  le modifiche effettuate al parametro nella funzione chiamata non
-  vengono riportate nel chiamante, quindi non avviene passaggio di dati.
-* **Per indirizzo**: viene fornito alla funzione chiamata l'esatto indirizzo
-  in memoria relativo alla variabile nel chiamante, quindi le modifiche
-  effettuate nella funzione chiamata hanno effetto anche nel chiamante, perciò
+* **Per valore**: il valore di ogni parametro attuale viene copiato e inserito
+  nel parametro formale corrispondente. Di conseguenza, le modifiche effettuate
+  al parametro formale non vengono riportate nel parametro attuale, ma solo
+  nella copia, quindi non avviene passaggio di dati.
+  <figure style="margin-top:15px" class=highlight markdown=1>
+  ```cpp
+  void stampa(int a);
+
+  int main() {
+      int a = 1;
+      stampa(a);
+  }
+
+  void stampa(int a) {
+      cout << a;
+  }
+  ```
+  </figure>
+* **Per indirizzo**: viene fornito al parametro formale l'esatto indirizzo
+  in memoria relativo al parametro attuale corrispondente, quindi le modifiche
+  effettuate sul parametro formale hanno effetto anche in quello attuale, perciò
   si ha passaggio di dati.
+  
+  In C++, per stabilire che un parametro debba essere trasmesso per indirizzo,
+  nell'intestazione e nel [prototipo](#prototipo) del sottoprogramma a cui
+  appartiene quel parametro bisogna mettere `&` prima del suo nome:
+  <figure style="margin-top:15px" class=highlight markdown=1>
+  ```cpp
+  void aggiungi_uno(int &a);
+
+  int main() {
+      int a = 1;
+      aggiungi_uno(a);
+
+      cout << a; // 2
+  }
+
+  void aggiungi_uno(int &a) {
+      a += 1;
+  }
+  ```
+  </figure>
 
 Per valori strutturati come gli array (vettori),
 [regole diverse si applicano](#parametri-e-vettori).
@@ -309,6 +292,33 @@ le parentesi tonde `()`:
 {% highlight cpp %}
 stampa(42, variabile);
 {% endhighlight %}
+
+## Parametri e vettori
+
+Per passare un array ad una funzione, all'interno dell'intestazione della
+funzione chiamata il parametro vettore deve essere dichiarato in modo diverso
+dagli altri parametri.
+Per dichiarare un parametro come vettore, bisogna scrivere il tipo degli
+elementi del vettore, seguito dal nome del parametro e da `[]`:
+
+{% figure caption:"_Figura 9._ Procedura che accetta un vettore di interi." %}
+```cpp
+// Questa procedura accetta un vettore di interi
+void procedura(int vettore[]) {
+  // ...
+}
+
+int main() {
+  int numeri[];
+
+  procedura(numeri);
+}
+```
+{% endfigure %}
+
+I vettori passati come parametri vengono trattati come se fossero passati per
+indirizzo: tutte le modifiche effettuate nella funzione chiamata hanno
+effetto anche nel chiamante.
 
 ## Indipendenza del sottoprogramma
 
@@ -497,30 +507,3 @@ int main() {
   title="Ignorare un valore di ritorno"
   content=noteFunctionCall
 %}
-
-## Parametri e vettori
-
-Per passare un array ad una funzione, all'interno dell'intestazione della
-funzione chiamata il parametro vettore deve essere dichiarato in modo diverso
-dagli altri parametri.
-Per dichiarare un parametro come vettore, bisogna scrivere il tipo degli
-elementi del vettore, seguito dal nome del parametro e da `[]`:
-
-{% figure caption:"_Figura 9._ Procedura che accetta un vettore di interi." %}
-```cpp
-// Questa procedura accetta un vettore di interi
-void procedura(int vettore[]) {
-  // ...
-}
-
-int main() {
-  int numeri[];
-
-  procedura(numeri);
-}
-```
-{% endfigure %}
-
-I vettori passati come parametri vengono trattati come se fossero passati per
-indirizzo: tutte le modifiche effettuate nella funzione chiamata hanno
-effetto anche nel chiamante.
