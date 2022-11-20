@@ -1,14 +1,29 @@
 ---
 layout: page
+annotations:
+  - key: test
+    content: "**Markdown** _test_"
+  - key: fake real annotation
+    content: |-
+      Lorem ipsum dolor sit amet, consectetur adipiscing
+      elit. Duis `viverra velit` vitae purus lacinia,
+      in varius.
+
+      ```cpp
+      // code example
+      int main() {
+        return 0; // (+test)
+      }
+      ```
 ---
 
 {% assign types = "primary, secondary, success, danger, warning, info, red, orange, yellow, green, cyan, blue, purple" | split: ", " %}
 
 {% include alert.html
-    color="warning"
-    icon="exclamation-triangle"
-    title="Avvertenza"
-    content="Questa pagina è usata per definire il design del sito."
+  color="warning"
+  icon="exclamation-triangle"
+  title="Avvertenza"
+  content="Questa pagina è usata per definire il design del sito."
 %}
 
 ## Alerts
@@ -54,6 +69,7 @@ This is a normal paragraph following a header. GitHub is a code hosting platform
  * @returns "Hello world"
  */
 var fun = function lang(l) {
+  // This is a test (+test) annotation
   dateformat.i18n = require('./lang/' + l);
   console.log(`Today is ${new Date()}`);
   return "Hello wrold".replace(/ro/, 'or');
@@ -67,6 +83,7 @@ var fun = function lang(l) {
  * `lang` function
  */
 const fun = function lang(l: string): string {
+  // This is a test (+test) annotation
   dateformat.i18n = require('./lang/' + l) as any;
   console.log(`Today is ${new Date()}`);
   return "Hello wrold".replace(/ro/, 'or');
@@ -75,6 +92,8 @@ const fun = function lang(l: string): string {
 
 {% highlight java %}
 package informatica.io.github.samplasion;
+
+// This is a test (+fake real annotation) annotation
 
 class DesignMD {
     public static void main(String args[]) {
@@ -85,6 +104,7 @@ class DesignMD {
 
 {% highlight ruby %}
 # Ruby code with syntax highlighting
+# This is a test (+test) annotation
 GitHubPages::Dependencies.gems.each do |gem, version|
   "a" =~ %r(a)i
   s.add_dependency(gem, "= #{version}")
@@ -107,6 +127,8 @@ void print(T &name) {
     cout << name;
 }
 
+// This is a test (+test) annotation
+
 int main() {
     struct String {
         string content;
@@ -126,6 +148,8 @@ INIZIO
   Farcire la torta
   Servire
 FINE
+
+// This is a test (+test) annotation
 
 SOTTOALGORITMO Preparare la base della torta
 INIZIO
@@ -340,6 +364,14 @@ function test() {
 <div class="accordion-container">
 {% include accordion.html header="More code" content=content %}
 </div>
+
+<span class="c">Useless, super hacky yet possible annotation: (+test)</span>
+
+```c
+// Single-annotation comment (with spaces around):
+3; //   (+test)    
+// Should be rendered as just the (+)
+```
 
 #### Header 4
 

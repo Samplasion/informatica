@@ -67,3 +67,19 @@
         });
     });
 </script>
+
+{%- if page.annotations -%}
+<script>
+    const annotations = {
+        // {% for annotation in page.annotations %}
+        // {% assign annot = annotation.content | markdownify | jsonify %}
+        "{{ annotation.key }}": "{{ annot | unquote }}",
+        // {% endfor %}
+    }
+</script>
+<script src="{{ "assets/js/code-annotations.js" | relative_url }}"></script>
+{%- endif -%}
+
+<!-- Tippy v6 -->
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>

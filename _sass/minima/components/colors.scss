@@ -1,3 +1,5 @@
+@import '../automated-a11y-sass.scss';
+
 $colors: (
     "primary": (
         "light": hsl(216, 90%, 50),
@@ -55,6 +57,14 @@ $colors: (
 
 @function get-color($type, $variant) {
     @return map-get($map: map-get($map: $colors, $key: $type), $key: $variant);
+}
+
+@function get-contrast-color($color, $black: #000, $white: #fff) {
+    @if (light-or-dark($color) == "light") {
+        @return $black;
+    } @else {
+        @return $white;
+    }
 }
 
 @mixin get-color-key($type, $key: "color") {
