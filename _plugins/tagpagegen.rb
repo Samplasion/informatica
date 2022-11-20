@@ -4,8 +4,8 @@ module Jekyll
 
     def generate(site)
       tags = site.documents.flat_map { |post| post.data['tags'] || [] }.to_set
-      tags.each do |tag|
-        site.pages << TagPage.new(site, site.source, tag)
+      site.data['langs'].keys.each do |lang|
+        site.pages << TagPage.new(site, site.source, lang)
       end
     end
   end
@@ -27,7 +27,7 @@ module Jekyll
       self.data['title'] = "Post relativi a #{lang['name']}"
       self.data['tagged_posts'] = site.documents.filter { |post|
         (post.data['tags'] || []).include? tag
-      }.sort { |a, b| b['date'] <=> a['date'] }
+      }.sort { |a, b| a['date'] <=> b['date'] }
     end
   end
 end
