@@ -1,7 +1,7 @@
 <figure class="highlight-box">
     {% assign includelang = include.lang %}
-    {% assign includehighlight_lines = include.highlight_lines %}
-    {%- highlight includelang highlight_lines=includehighlight_lines -%}
+    {% assign includemark_lines = include.mark_lines %}
+    {%- highlight includelang mark_lines=includemark_lines -%}
     {{ include.code }}
     {%- endhighlight -%}
 

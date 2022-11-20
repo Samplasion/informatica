@@ -1,7 +1,10 @@
+@import "preamble.scss";
+
 @import "components/abbr.scss";
 @import "components/accordion.scss";
 @import "components/alert.scss";
 @import "components/anchor.scss";
+@import "components/code-box.scss";
 @import "components/highlight-box.scss";
 @import "components/mermaid.scss";
 @import "components/text.scss";
@@ -14,6 +17,10 @@
         width: 100%;
         padding: 0 12px;
     }
+}
+
+.rouge-table tr {
+    vertical-align: top;
 }
 
 nav.toc {

@@ -1,0 +1,27 @@
+@font-face {
+    font-family: MesloNF;
+    src: url(../fonts/MesloNF-R.ttf);
+}
+
+@font-face {
+    font-family: MesloNF;
+    font-style: italic;
+    src: url(../fonts/MesloNF-I.ttf);
+}
+
+@font-face {
+    font-family: MesloNF;
+    font-weight: bold;
+    src: url(../fonts/MesloNF-B.ttf);
+}
+
+@font-face {
+    font-family: MesloNF;
+    font-weight: bold;
+    font-style: italic;
+    src: url(../fonts/MesloNF-BI.ttf);
+}
+
+code, pre {
+    font-family: MesloNF, "Menlo", "Inconsolata", "Consolas", "Roboto Mono", "Ubuntu Mono", "Liberation Mono", "Courier New", monospace !important;
+}

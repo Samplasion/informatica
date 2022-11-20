@@ -1,0 +1,34 @@
+@import url(code.css);
+@import 'colors.scss';
+
+[data-lang], [class^="language-"] code {
+    display: inline-block;
+    min-width: 100%;
+
+    &::before {
+        font: 400 16px/1.5 FontAwesome, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Segoe UI Emoji", "Segoe UI Symbol", "Apple Color Emoji", Roboto, Helvetica, Arial, sans-serif;
+        display: block;
+        position: relative;
+        top: -9px;
+        left: -12px;
+        padding: 6px 12px;
+        width: 100%;
+
+        .fit-code-header & {
+            width: fit-content;
+            border-radius: 3px 0 3px 0;
+        }
+
+        .no-code-header &, &.no-code-header,
+        .alert & {
+            display: none;
+        }
+
+        @for $i from 0 to 7 {
+            &[data-code-header-color="#{$i}"] {
+                --debug-box-color: #{nth(map-keys($colors), 7 + $i)};
+                @include colored-box(nth(map-keys($colors), 7 + $i));
+            }
+        }
+    }
+}

@@ -25,6 +25,7 @@ group :jekyll_plugins do
   gem 'jekyll-highlight-param', :github => 'UriShX/jekyll-highlight-param'
   gem 'jekyll-figure'
   gem 'jekyll-email-protect'
+  gem 'jekyll-minifier'
 end
 gem "webrick"
 

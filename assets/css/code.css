@@ -1,0 +1,13 @@
+---
+---
+
+/* {%- dump_lexers -%} */
+/* {%- for lang in page.lexers -%} /**/
+/* {%- for k in lang.key -%} /**/
+[data-lang="{{ k }}"]::before,
+[class~="language-{{ k }}"] code::before
+/* {%- unless forloop.last -%} /**/,
+/* {%- endunless -%} /**/
+/* {%- endfor -%} /**/
+{content: "\f121   {{ lang.name }}";}
+/* {%- endfor -%} /**/

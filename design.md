@@ -2,7 +2,7 @@
 layout: page
 ---
 
-{% assign types = "primary, secondary, success, danger, warning, info" | split: ", " %}
+{% assign types = "primary, secondary, success, danger, warning, info, red, orange, yellow, green, cyan, blue, purple" | split: ", " %}
 
 {% include alert.html
     color="warning"
@@ -44,7 +44,7 @@ This is a normal paragraph following a header. GitHub is a code hosting platform
 
 ### Header 3
 
-```js
+{% highlight js %}
 // JavaScript code with syntax highlighting.
 
 /**
@@ -58,16 +58,40 @@ var fun = function lang(l) {
   console.log(`Today is ${new Date()}`);
   return "Hello wrold".replace(/ro/, 'or');
 }
-```
+{% endhighlight %}
 
-```ruby
+{% highlight ts %}
+// TypeScript code with syntax highlighting.
+
+/**
+ * `lang` function
+ */
+const fun = function lang(l: string): string {
+  dateformat.i18n = require('./lang/' + l) as any;
+  console.log(`Today is ${new Date()}`);
+  return "Hello wrold".replace(/ro/, 'or');
+}
+{% endhighlight %}
+
+{% highlight java %}
+package informatica.io.github.samplasion;
+
+class DesignMD {
+    public static void main(String args[]) {
+        System.out.println("Hello World");
+    }
+}
+{% endhighlight %}
+
+{% highlight ruby %}
 # Ruby code with syntax highlighting
 GitHubPages::Dependencies.gems.each do |gem, version|
+  "a" =~ %r(a)i
   s.add_dependency(gem, "= #{version}")
 end
-```
+{% endhighlight %}
 
-```cpp
+{% highlight cpp %}
 /**
  * Fake Header
  * (c) 2022 {{ site.author.name }}
@@ -92,6 +116,178 @@ int main() {
     print(s.content);
     return 0;
 }
+{% endhighlight %}
+
+{% highlight pseudo mark_lines="3 5 6" %}
+ALGORITMO Preparare una torta farcita
+INIZIO
+  Preparare la base della torta
+  Preparare la farcitura
+  Farcire la torta
+  Servire
+FINE
+
+SOTTOALGORITMO Preparare la base della torta
+INIZIO
+  Preparare l'impasto
+  Preparare la teglia
+  Scaldare il forno
+  Infornare
+  Sfornare
+FINE
+
+SOTTOALGORITMO Preparare la farcitura
+INIZIO
+  // ...
+FINE
+
+SOTTOALGORITMO Farcire la torta
+INIZIO
+  // ...
+FINE
+
+FUNZIONE RicercaBinaria(VAL Vet: Vettore, VAL N: INTERO, VAL X: INTERO): BOOLEANO
+VARIABILI
+    Primo, Ultimo, Centro: INTERO
+    Trovato: BOOLEANO
+INIZIO
+    Primo = 1
+    Ultimo = N
+    Trovato = falso
+    MENTRE ((Primo ≤ Ultimo) AND (NOT Trovato)) ESEGUI
+        Centro = (Primo + Ultimo) DIV 2
+        SE (Vet[Centro] == X) ALLORA
+            Trovato = vero
+        ALTRIMENTI SE (Vet[Centro] < X) ALLORA
+            Primo = Centro + 1
+        ALTRIMENTI
+            Ultimo = Centro - 1
+        FINESE
+    FINEMENTRE
+    RITORNO(Trovato)
+FINE
+
+ALGORITMO CaricaVettore
+TIPO Vettore = ARRAY[10] di INTERO
+VARIABILI
+    V: Vettore
+    NumElementi: INTERO
+INIZIO
+    NumElementi = OttieniDimensione()
+    Caricamento(V, NumElementi)
+FINE
+
+FUNZIONE OttieniDimensione(): INTERO
+VARIABILI
+    Dim: INTERO
+INIZIO
+    RIPETI
+        SCRIVI("Inserisci il numero di elementi")
+        LEGGI(Dim)
+    FINCHÉ ((Dim > 0) AND (Dim < 10))
+    RITORNO(Dim)
+FINE
+
+// Ugh...
+PROCEDURA Caricamento(REF Vet: Vettore, VAL N: INTERO)
+VARIABILI
+    I: INTERO
+INIZIO
+    PER I = 1 A N ESEGUI
+        SCRIVI("Inserisci il ", I, "° elemento")
+        LEGGI(Vet[I])
+    FINEPER
+FINE
+
+// Array right shift ([a, b, c, d] => [a, a, b, c])
+PROCEDURA ShiftDestro(REF Vet: Vettore, VAL N: INTERO)
+VARIABILI
+    I: INTERO
+INIZIO
+    PER I = N INDIETRO A 1 ESEGUI
+        Vet[I] = Vet[I - 1]
+    FINEPER
+FINE
+
+TIPO Tavolo: RECORD
+    modello: STRINGA[100]
+    lunghezza: INTERO
+    larghezza: INTERO
+    profondita: INTERO
+FINERECORD
+{% endhighlight %}
+
+```plsql
+SELECT q'{a quoted string}' AS s, TO_CHAR(SYSDATE,'MM/DD/YYYY') AS "Current Date" FROM DUAL
+WHERE 1=1;
+```
+
+```moonscript
+util = require "my.module"
+
+a_table = {
+  foo: 'bar'
+  interpolated: "foo-#{other.stuff 2 + 3}"
+  "string": 2
+  do: 'keyword'
+}
+
+class MyClass extends SomeClass
+  new: (@init, arg2 = 'default') =>
+    @derived = @init + 2
+    super!
+
+  other: =>
+    @foo + 2
+```
+
+```objective_cpp
+@import Foundation;
+#import <array>
+#include <vector>
+
+@interface IntegerArray : NSObject {
+    std::vector<NSUInteger> _numbers;
+}
+@property(readonly) NSUInteger count;
+
+- (instancetype)initWithNumbers:(NSUInteger *)numbers count:(NSUInteger)count;
+- (NSUInteger)numberAtIndex:(NSUInteger)index;
+@end
+
+int main(int argc, char **argv) {
+    auto numbers = std::array<NSUInteger, 3>{1, 2, 3};
+    NSLog(@"%@", [[IntegerArray alloc] initWithNumbers:numbers.data() count:numbers.size()]);
+}
+```
+
+```http
+POST /demo/submit/ HTTP/1.1
+Host: {{ site.url | replace: "https://", "" | replace: "http://", "" | replace: "/", "" }}
+Cache-Control: max-age=0
+Origin: {{ site.url }}
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_2)
+    AppleWebKit/535.7 (KHTML, like Gecko) Chrome/16.0.912.63 Safari/535.7
+Content-Type: application/json
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Referer: http://pygments.org/
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: en-US,en;q=0.8
+Accept-Charset: windows-949,utf-8;q=0.7,*;q=0.3
+
+{"name":"test","lang":"text","boring":true}
+```
+
+```html
+<!doctype html>
+<html>
+  <head><title>Title!</title></head>
+  <body>
+    <p id="foo">Hello, World!</p>
+    <script type="text/javascript">var a = 1;</script>
+    <style type="text/css">#foo { font-weight: bold; }</style>
+  </body>
+</html>
 ```
 
 {% capture _alert_content_1 %}

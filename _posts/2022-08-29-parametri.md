@@ -4,7 +4,7 @@ title: Funzioni, procedure e parametri
 date: 2022-08-29 15:26:44 +0200
 categories: cpp sottoprogrammi
 tag: cpp
-modified_date: 2022-11-17T17:45:42.448Z
+modified_date: 2022-11-20T10:39:21.790Z
 excerpt: Tutto su modello top-down, funzioni, procedure e parametri.
 ---
 
@@ -64,40 +64,34 @@ La figura 1 mostra un esempio di un algoritmo per la preparazione di una torta
 pensato con il modello top-down.
 
 {% figure caption:"_Figura 1._ L'approccio _top-down_ nella preparazione di una torta farcita." %}
-<!-- TODO: fix this -->
-<div class="highlight">
-<!-- The empty Liquid tags strip leading and trailing spaces -->
-<pre>
-<code class="language-pseudocode" data-lang="pseudocode">{{- "" -}}
-<span class="kt">ALGORITMO</span> <span class="nf">Preparare una torta farcita</span>
-<span class="kt">INIZIO</span>
-  <span class="nf">Preparare la base della torta</span>
-  <span class="nf">Preparare la farcitura</span>
-  <span class="nf">Farcire la torta</span>
+```pseudo
+ALGORITMO Preparare una torta farcita
+INIZIO
+  Preparare la base della torta
+  Preparare la farcitura
+  Farcire la torta
   Servire
-<span class="kt">FINE</span>
+FINE
 
-<span class="kt">SOTTOALGORITMO</span> <span class="nf">Preparare la base della torta</span>
-<span class="kt">INIZIO</span>
+SOTTOALGORITMO Preparare la base della torta
+INIZIO
   Preparare l'impasto
   Preparare la teglia
   Scaldare il forno
   Infornare
   Sfornare
-<span class="kt">FINE</span>
+FINE
 
-<span class="kt">SOTTOALGORITMO</span> <span class="nf">Preparare la farcitura</span>
-<span class="kt">INIZIO</span>
-  ...
-<span class="kt">FINE</span>
+SOTTOALGORITMO Preparare la farcitura
+INIZIO
+  // ...
+FINE
 
-<span class="kt">SOTTOALGORITMO</span> <span class="nf">Farcire la torta</span>
-<span class="kt">INIZIO</span>
-  ...
-<span class="kt">FINE</span>
-{{- "" -}}</code>
-</pre>
-</div>
+SOTTOALGORITMO Farcire la torta
+INIZIO
+  // ...
+FINE
+```
 {% endfigure %}
 
 Il sottoproblema `Preparare la base della torta` è stato isolato in un
@@ -342,12 +336,12 @@ int main() {
   std::cout << punteggio;
 }
 {% endcapture %}
-{% include codebox.html lang="cpp" code=functionDependence highlight_lines="3 6" %}
+{% include codebox.html lang="cpp" code=functionDependence mark_lines="3 6" %}
 
 Se, in un altro programma analogo, portassimo lo stesso sottoprogramma, si
 verificherebbe un errore:
 
-{% highlight cpp highlight_lines="3 6 7 8 9" %}
+{% highlight cpp mark_lines="3 6 7 8 9" %}
 #include <iostream>
 
 int punti = 0;
@@ -385,7 +379,7 @@ int main() {
   std::cout << punti;
 }
 {% endcapture %}
-{% include codebox.html lang="cpp" code=functionDependence2 highlight_lines="6" %}
+{% include codebox.html lang="cpp" code=functionDependence2 mark_lines="6" %}
 
 ## Prototipo
 

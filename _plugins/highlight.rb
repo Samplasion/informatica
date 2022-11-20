@@ -1,8 +1,6 @@
-# Monkey-patch to allow highlighting lines
 module Jekyll
   module Tags
     class HighlightBlock
-      # override
       def render(context)
         prefix = context["highlighter_prefix"] || ""
         suffix = context["highlighter_suffix"] || ""
@@ -11,7 +9,7 @@ module Jekyll
         output =
           case context.registers[:site].highlighter
           when "rouge"
-            render_rouge(code, context)
+            render_rouge(context, code)
           when "pygments"
             render_pygments(code, context)
           else
@@ -22,45 +20,17 @@ module Jekyll
         prefix + rendered_output + suffix
       end
 
-      def render_rouge(code, context)
-        require "rouge"
-        formatter = Rouge::Formatters::HTMLLineHighlighter.new(
-          ::Rouge::Formatters::HTML.new,
-          highlight_lines: parse_highlighted_lines(context, @highlight_options[:highlight_lines])
-        )
-        actual_lang = get_actual_lang(context, code)
-        lexer = ::Rouge::Lexer.find_fancy(actual_lang, code) || Rouge::Lexers::PlainText
-        formatter.format(lexer.lex(code))
-      end
-
       private
 
-      def to_str_highlight(thing)
-        return thing.join(" ") if thing.kind_of?(Array)
-        return thing.to_s
-      end
+      def render_rouge(context, code)
+        require "rouge"
+        formatter = Rouge::Formatters::HTML.new
+        formatter = line_highlighter_formatter(context, formatter) if @highlight_options[:mark_lines]
+        formatter = table_formatter(formatter) if @highlight_options[:linenos]
 
-      def is_non_digit(str)
-        # puts "#{str}".chomp.scan(/[^0-9 ]/)
-        "#{str}".chomp.scan(/[^0-9 ]/).any? && !str.empty?
-      end
-
-      def to_int_arr(str)
-        str.split.map(&:to_i)
-      end
-
-      def parse_highlighted_lines(context, lines_string)
-        lines_string = to_str_highlight(lines_string)
-        # puts "'#{lines_string}' #{is_non_digit(lines_string)}"
-        return [] if lines_string.nil?
-        if is_non_digit(lines_string) then
-          # puts "=> '#{context[lines_string]}' #{is_non_digit(context[lines_string])}"
-          lines_string = context[lines_string]
-        end
-        # puts "'#{lines_string}' #{is_non_digit(lines_string)}"
-        return [] if lines_string.nil? || is_non_digit(lines_string)
-
-        to_int_arr(lines_string)
+        actual_lang = get_actual_lang(context, code)
+        lexer = Rouge::Lexer.find_fancy(actual_lang, code) || Rouge::Lexers::PlainText
+        formatter.format(lexer.lex(code))
       end
 
       def get_actual_lang(context, code)
@@ -73,6 +43,38 @@ module Jekyll
         actual_lang = get_actual_lang(context, code)
         code_attrs = %(class="language-#{actual_lang.tr("+", "-")}" data-lang="#{actual_lang}")
         %(<figure class="highlight"><pre><code #{code_attrs}>#{code.chomp}</code></pre></figure>)
+      end
+
+      def line_highlighter_formatter(context, formatter)
+        Rouge::Formatters::HTMLLineHighlighter.new(
+          formatter,
+          :highlight_lines => mark_lines(context)
+        )
+      end
+
+      def mark_lines(context)
+        value = @highlight_options[:mark_lines]
+        return value.map(&:to_i) if value.is_a?(Array)
+        # puts "> #{context[value] || "nil"} {context[#{value}]}"
+        # puts "=> #{context[value].split.map(&:to_i).map(&:to_i)}" if context[value] != nil
+        if context[value] != nil
+          return context[value].split.map(&:to_i).map(&:to_i)
+        else
+          return []
+        end
+      
+        raise SyntaxError, "Syntax Error for mark_lines declaration. Expected a " \
+                           "double-quoted list of integers, or a variable referring " \
+                           "to it."
+      end
+
+      def table_formatter(formatter)
+        Rouge::Formatters::HTMLTable.new(
+          formatter,
+          :css_class    => "highlight",
+          :gutter_class => "gutter",
+          :code_class   => "code"
+        )
       end
     end
   end

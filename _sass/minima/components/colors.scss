@@ -23,6 +23,34 @@ $colors: (
         "light": hsl(190, 75%, 40),
         "dark": hsl(188, 77%, 50),
     ),
+    "red": (
+        "light": hsl(355, 70%, 50),
+        "dark": hsl(6, 65%, 50),
+    ),
+    "orange": (
+        "light": hsl(25, 80%, 50),
+        "dark": hsl(37, 88%, 50),
+    ),
+    "yellow": (
+        "light": hsl(40, 90%, 50%),
+        "dark": hsl(55, 65%, 50),
+    ),
+    "green": (
+        "light": hsl(105, 50%, 50),
+        "dark": hsl(105, 58%, 50),
+    ),
+    "cyan": (
+        "light": hsl(190, 70%, 50%),
+        "dark": hsl(190, 65%, 50),
+    ),
+    "blue": (
+        "light": hsl(210, 70%, 50%),
+        "dark": hsl(210, 65%, 50),
+    ),
+    "purple": (
+        "light": hsl(282, 70%, 50%),
+        "dark": hsl(282, 45%, 50),
+    )
 );
 
 @function get-color($type, $variant) {
