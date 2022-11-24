@@ -4,7 +4,7 @@ title: Funzioni, procedure e parametri
 date: 2022-08-29 15:26:44 +0200
 categories: cpp sottoprogrammi
 tag: cpp
-modified_date: 2022-11-20T10:39:21.790Z
+modified_date: 2022-11-24T16:19:18.087Z
 excerpt: Tutto su modello top-down, funzioni, procedure e parametri.
 ---
 
@@ -295,7 +295,7 @@ dagli altri parametri.
 Per dichiarare un parametro come vettore, bisogna scrivere il tipo degli
 elementi del vettore, seguito dal nome del parametro e da `[]`:
 
-{% figure caption:"_Figura 9._ Procedura che accetta un vettore di interi." %}
+{% figure caption:"_Figura 4._ Procedura che accetta un vettore di interi." %}
 ```cpp
 // Questa procedura accetta un vettore di interi
 void procedura(int vettore[]) {
@@ -311,8 +311,8 @@ int main() {
 {% endfigure %}
 
 I vettori passati come parametri vengono trattati come se fossero passati per
-indirizzo: tutte le modifiche effettuate nella funzione chiamata hanno
-effetto anche nel chiamante.
+indirizzo: tutte le modifiche effettuate sulla variabile `vettore` in
+`procedura` hanno effetto anche sulla variabile `numeri` del `main`.
 
 ## Indipendenza del sottoprogramma
 
@@ -388,7 +388,7 @@ utilizzate. Questo si può fare definendo la funzione per intero prima del suo
 utilizzo. Talvolta, però, può essere utile separare la dichiarazione dalla
 definizione; questo è possibile grazie al **prototipo** della funzione:
 
-{% figure caption:"_Figura 4._ Prototipo delle funzioni." %}
+{% figure caption:"_Figura 5._ Prototipo delle funzioni." %}
 ```cpp
 void stampa(int numero);
 ```
@@ -397,7 +397,7 @@ void stampa(int numero);
 Nella pratica, il prototipo della funzione è l'intestazione seguita da un
 punto e virgola `;`. I nomi dei parametri possono essere omessi:
 
-{% figure caption:"_Figura 5._ Prototipo di funzione senza nomi dei parametri." %}
+{% figure caption:"_Figura 6._ Prototipo di funzione senza nomi dei parametri." %}
 ```cpp
 void stampa(int);
 ```
@@ -423,7 +423,7 @@ deve passare solo un valore al chiamante, può passargliela attraverso un
 riportata la tipologia del valore che viene ritornato.
 Il valore di ritorno viene posto dopo la parola chiave `return`.
 
-{% figure caption:"_Figura 6._ Funzione con valore di ritorno." %}
+{% figure caption:"_Figura 7._ Funzione con valore di ritorno." %}
 ```cpp
 int funzione() {
   return 42;
@@ -434,7 +434,7 @@ int funzione() {
 Dopo `return`, l'esecuzione del codice passa immediatamente al chiamante e
 l'eventuale codice dopo `return` **viene ignorato**.
 
-{% figure caption:"_Figura 7._ Funzione con codice dopo `return`." %}
+{% figure caption:"_Figura 8._ Funzione con codice dopo `return`." %}
 ```cpp
 int funzione2() {
   return 42;
@@ -449,7 +449,7 @@ dove può stare un valore del tipo corrispondente al valore di ritorno. Ad
 esempio, una chiamata alla funzione `funzione` sopra può essere posto dovunque
 possa essere posto un numero:
 
-{% figure caption:"_Figura 8._ Chiamata a funzione in un'espressione." %}
+{% figure caption:"_Figura 9._ Chiamata a funzione in un'espressione." %}
 ```cpp
 int funzione() {
   return 42;
