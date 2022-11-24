@@ -3,7 +3,6 @@ module Jekyll
     safe true
 
     def generate(site)
-      tags = site.documents.flat_map { |post| post.data['tags'] || [] }.to_set
       site.data['langs'].keys.each do |lang|
         site.pages << TagPage.new(site, site.source, lang)
       end
